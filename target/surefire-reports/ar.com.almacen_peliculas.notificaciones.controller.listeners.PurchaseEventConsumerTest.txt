@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: ar.com.almacen_peliculas.notificaciones.controller.listeners.PurchaseEventConsumerTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.123 s -- in ar.com.almacen_peliculas.notificaciones.controller.listeners.PurchaseEventConsumerTest

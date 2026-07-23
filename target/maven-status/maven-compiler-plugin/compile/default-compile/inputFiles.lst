@@ -1,9 +1,0 @@
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\NotificacionesApplication.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\controller\NotificacionController.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\controller\listeners\PurchaseEventConsumer.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\data\repositories\DestinatarioRepository.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\domain\services\NotificationService.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\config\RabbitMQConfig.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\data\services\EmailNotificationServiceImpl.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\domain\models\Destinatario.java
-C:\Users\marce\Desktop\workspace\alquiler de peliculas\notificaciones\src\main\java\ar\com\almacen_peliculas\notificaciones\domain\models\CompraEvent.java

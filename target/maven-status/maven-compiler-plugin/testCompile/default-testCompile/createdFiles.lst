@@ -1,7 +1,0 @@
-ar\com\almacen_peliculas\notificaciones\domain\models\CompraEventTest.class
-ar\com\almacen_peliculas\notificaciones\NotificacionesApplicationTests.class
-ar\com\almacen_peliculas\notificaciones\data\repositories\DestinatarioRepositoryTest.class
-ar\com\almacen_peliculas\notificaciones\controller\NotificacionControllerTest.class
-ar\com\almacen_peliculas\notificaciones\controller\listeners\PurchaseEventConsumerTest.class
-ar\com\almacen_peliculas\notificaciones\domain\models\DestinatarioTest.class
-ar\com\almacen_peliculas\notificaciones\data\services\EmailNotificationServiceImplTest.class
