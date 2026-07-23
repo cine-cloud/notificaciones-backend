@@ -1,0 +1,10 @@
+ar\com\almacen_peliculas\notificaciones\controller\NotificacionController.class
+ar\com\almacen_peliculas\notificaciones\data\repositories\DestinatarioRepository.class
+ar\com\almacen_peliculas\notificaciones\data\services\EmailNotificationServiceImpl.class
+ar\com\almacen_peliculas\notificaciones\domain\models\Destinatario.class
+ar\com\almacen_peliculas\notificaciones\config\RabbitMQConfig.class
+ar\com\almacen_peliculas\notificaciones\domain\models\CompraEvent.class
+ar\com\almacen_peliculas\notificaciones\domain\services\NotificationService.class
+ar\com\almacen_peliculas\notificaciones\NotificacionesApplication.class
+ar\com\almacen_peliculas\notificaciones\controller\listeners\PurchaseEventConsumer.class
+ar\com\almacen_peliculas\notificaciones\domain\models\CompraEvent$Producto.class

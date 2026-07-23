@@ -1,6 +1,8 @@
 package ar.com.almacen_peliculas.notificaciones.data.services;
 
+import ar.com.almacen_peliculas.notificaciones.data.repositories.DestinatarioRepository;
 import ar.com.almacen_peliculas.notificaciones.domain.models.CompraEvent;
+import ar.com.almacen_peliculas.notificaciones.domain.models.Destinatario;
 import ar.com.almacen_peliculas.notificaciones.domain.services.NotificationService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -10,15 +12,19 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmailNotificationServiceImpl implements NotificationService {
 
     private static final Logger log = LoggerFactory.getLogger(EmailNotificationServiceImpl.class);
 
     private final JavaMailSender javaMailSender;
+    private final DestinatarioRepository destinatarioRepository;
 
-    public EmailNotificationServiceImpl(JavaMailSender javaMailSender) {
+    public EmailNotificationServiceImpl(JavaMailSender javaMailSender, DestinatarioRepository destinatarioRepository) {
         this.javaMailSender = javaMailSender;
+        this.destinatarioRepository = destinatarioRepository;
     }
 
     @Override
@@ -36,10 +42,23 @@ public class EmailNotificationServiceImpl implements NotificationService {
             javaMailSender.send(mimeMessage);
             log.info("Email enviado exitosamente a {}", event.emailCliente());
 
+            // Registrar destinatario enviado en la base de datos
+            Destinatario destinatario = new Destinatario(
+                    event.idCompra(),
+                    event.nombreCliente() != null ? event.nombreCliente() : "Cliente",
+                    event.emailCliente()
+            );
+            destinatarioRepository.save(destinatario);
+
         } catch (MessagingException e) {
             log.error("Fallo al construir o enviar el email para la compra {}: {}", event.idCompra(), e.getMessage(), e);
             throw new RuntimeException("Error al enviar email de notificación", e);
         }
+    }
+
+    @Override
+    public List<Destinatario> obtenerTodosLosDestinatarios() {
+        return destinatarioRepository.findAll();
     }
 
     private String buildHtmlContent(CompraEvent event) {
