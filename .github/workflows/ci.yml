@@ -6,13 +6,11 @@ on:
       - main
       - master
       - develop
-      - cicd-integracionkeycloak
   pull_request:
     branches:
       - main
       - master
       - develop
-      - cicd-integracionkeycloak
 
 jobs:
   build-and-test:
@@ -30,10 +28,18 @@ jobs:
           cache: 'maven'
 
       - name: Make Maven Wrapper Executable
-        run: chmod +x mvnw
+        run: |
+          if [ -f "./mvnw" ]; then
+            chmod +x mvnw
+          fi
 
       - name: Build and Run Tests with Coverage Check
-        run: ./mvnw clean verify
+        run: |
+          if [ -f "./mvnw" ]; then
+            ./mvnw clean verify
+          else
+            mvn clean verify
+          fi
 
       - name: Upload JaCoCo Coverage Report
         if: always()
