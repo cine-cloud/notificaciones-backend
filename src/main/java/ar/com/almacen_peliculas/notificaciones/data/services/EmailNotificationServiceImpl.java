@@ -91,9 +91,15 @@ public class EmailNotificationServiceImpl implements NotificationService {
         html.append("</tbody>")
             .append("</table>");
 
-        if (event.subtotal() != null && event.descuentoMonto() != null && event.descuentoMonto().compareTo(java.math.BigDecimal.ZERO) > 0) {
-            html.append("<p style='margin: 5px 0; font-size: 1.1em;'>Subtotal: <strong>$").append(event.subtotal()).append("</strong></p>")
-                .append("<p style='margin: 5px 0; font-size: 1.1em; color: #e74c3c;'>Descuento Aplicado: <strong>-$").append(event.descuentoMonto()).append("</strong></p>");
+        java.math.BigDecimal descMonto = event.descuentoMonto();
+        java.math.BigDecimal subtotal = event.subtotal();
+
+        if (descMonto != null && descMonto.compareTo(java.math.BigDecimal.ZERO) > 0) {
+            if (subtotal == null || subtotal.compareTo(event.total()) == 0) {
+                subtotal = event.total().add(descMonto);
+            }
+            html.append("<p style='margin: 5px 0; font-size: 1.1em;'>Subtotal: <strong>$").append(subtotal).append("</strong></p>")
+                .append("<p style='margin: 5px 0; font-size: 1.1em; color: #e74c3c;'>Descuento Aplicado: <strong>-$").append(descMonto).append("</strong></p>");
         }
 
         html.append("<h3 style='margin-top: 10px;'>Total Pagado: <span style='color: #27ae60;'>$").append(event.total()).append("</span></h3>")
