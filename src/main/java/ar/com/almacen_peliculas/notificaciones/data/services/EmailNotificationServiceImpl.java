@@ -89,8 +89,14 @@ public class EmailNotificationServiceImpl implements NotificationService {
         }
 
         html.append("</tbody>")
-            .append("</table>")
-            .append("<h3>Total Pagado: <span style='color: #27ae60;'>$").append(event.total()).append("</span></h3>")
+            .append("</table>");
+
+        if (event.subtotal() != null && event.descuentoMonto() != null && event.descuentoMonto().compareTo(java.math.BigDecimal.ZERO) > 0) {
+            html.append("<p style='margin: 5px 0; font-size: 1.1em;'>Subtotal: <strong>$").append(event.subtotal()).append("</strong></p>")
+                .append("<p style='margin: 5px 0; font-size: 1.1em; color: #e74c3c;'>Descuento Aplicado: <strong>-$").append(event.descuentoMonto()).append("</strong></p>");
+        }
+
+        html.append("<h3 style='margin-top: 10px;'>Total Pagado: <span style='color: #27ae60;'>$").append(event.total()).append("</span></h3>")
             .append("<p>Si tienes alguna consulta, no dudes en responder a este correo.</p>")
             .append("<p>¡Que disfrutes tu película!</p>")
             .append("</body>")

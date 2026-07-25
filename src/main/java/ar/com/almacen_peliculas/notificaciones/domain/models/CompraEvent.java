@@ -10,8 +10,20 @@ public record CompraEvent(
         String emailCliente,
         String nombreCliente,
         List<Producto> productos,
+        BigDecimal subtotal,
+        BigDecimal descuentoMonto,
         BigDecimal total
 ) {
+    public CompraEvent(
+            String idCompra,
+            LocalDateTime fecha,
+            String emailCliente,
+            String nombreCliente,
+            List<Producto> productos,
+            BigDecimal total
+    ) {
+        this(idCompra, fecha, emailCliente, nombreCliente, productos, total, BigDecimal.ZERO, total);
+    }
     public record Producto(
             String idProducto,
             String nombre,
